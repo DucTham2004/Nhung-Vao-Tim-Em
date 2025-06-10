@@ -83,6 +83,7 @@ DSTATUS USER_initialize (
 {
   /* USER CODE BEGIN INIT */
     return USER_SPI_initialize(pdrv);
+//	return 0;
   /* USER CODE END INIT */
 }
 
@@ -97,6 +98,7 @@ DSTATUS USER_status (
 {
   /* USER CODE BEGIN STATUS */
     return USER_SPI_status(pdrv);
+//	return 0;
   /* USER CODE END STATUS */
 }
 
@@ -117,6 +119,7 @@ DRESULT USER_read (
 {
   /* USER CODE BEGIN READ */
     return USER_SPI_read(pdrv, buff, sector, count);
+//	return RES_OK;
   /* USER CODE END READ */
 }
 
@@ -139,6 +142,7 @@ DRESULT USER_write (
   /* USER CODE BEGIN WRITE */
   /* USER CODE HERE */
     return USER_SPI_write(pdrv, buff, sector, count);
+//	return RES_OK;
   /* USER CODE END WRITE */
 }
 #endif /* _USE_WRITE == 1 */
@@ -159,6 +163,21 @@ DRESULT USER_ioctl (
 {
   /* USER CODE BEGIN IOCTL */
     return USER_SPI_ioctl(pdrv, cmd, buff);
+//	switch(cmd) {
+//	        case GET_SECTOR_COUNT:
+//	            *(DWORD*)buff = 2048;   // 2048 sectors → 1 MB
+//	            return RES_OK;
+//	        case GET_SECTOR_SIZE:
+//	            *(WORD*)buff = 512;
+//	            return RES_OK;
+//	        case GET_BLOCK_SIZE:
+//	            *(DWORD*)buff = 1;
+//	            return RES_OK;
+//	        case CTRL_SYNC:
+//	            return RES_OK;
+//	        default:
+//	            return RES_PARERR;
+//	    }
   /* USER CODE END IOCTL */
 }
 #endif /* _USE_IOCTL == 1 */

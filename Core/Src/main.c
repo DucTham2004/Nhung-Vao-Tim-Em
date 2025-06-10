@@ -23,6 +23,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include <string.h>
+#include <stdarg.h>
 
 /* USER CODE END Includes */
 
@@ -106,7 +108,7 @@ int main(void)
   MX_SPI1_Init();
   MX_FATFS_Init();
   MX_USART1_UART_Init();
-  MX_USB_DEVICE_Init();
+  MX_USB_DEVICE_Init(); //????
   /* USER CODE BEGIN 2 */
 
   myprintf("\r\n~ SD card demo by kiwih ~\r\n\r\n");

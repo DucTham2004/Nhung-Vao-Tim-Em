@@ -536,7 +536,10 @@ inline DRESULT USER_SPI_ioctl (
 			res = RES_OK;	/* FatFs does not check result of this command */
 		}
 		break;
-
+	case GET_SECTOR_SIZE:
+	    *(WORD*)buff = 512;
+	    res = RES_OK;
+	    break;
 	default:
 		res = RES_PARERR;
 	}

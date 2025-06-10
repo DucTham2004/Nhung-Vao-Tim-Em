@@ -26,8 +26,9 @@
 #include "usbd_msc.h"
 #include "usbd_storage_if.h"
 
-/* USER CODE BEGIN Includes */
 
+/* USER CODE BEGIN Includes */
+#include "main.h"
 /* USER CODE END Includes */
 
 /* USER CODE BEGIN PV */
@@ -72,18 +73,22 @@ void MX_USB_DEVICE_Init(void)
   {
     Error_Handler();
   }
+  myprintf("\r\n~ USB_Init OK ~\r\n\r\n");
   if (USBD_RegisterClass(&hUsbDeviceHS, &USBD_MSC) != USBD_OK)
   {
     Error_Handler();
   }
+  myprintf("\r\n~ USBD_RegisterClass OK ~\r\n\r\n");
   if (USBD_MSC_RegisterStorage(&hUsbDeviceHS, &USBD_Storage_Interface_fops_HS) != USBD_OK)
   {
     Error_Handler();
   }
+  myprintf("\r\n~ USBD_MSC_RegisterStorag OK ~\r\n\r\n");
   if (USBD_Start(&hUsbDeviceHS) != USBD_OK)
   {
     Error_Handler();
   }
+  myprintf("\r\n~ USBD_Start ok ~\r\n\r\n");
 
   /* USER CODE BEGIN USB_DEVICE_Init_PostTreatment */
 
