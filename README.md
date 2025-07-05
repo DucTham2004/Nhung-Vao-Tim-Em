@@ -1,1 +1,8 @@
-# Project-Embedded
+# PROJECT EMBEDDED
+# GIỚI THIỆU
+# TÁC GIẢ
+# MÔI TRƯỜNG HOẠT ĐỘNG
+# SƠ ĐỒ SCHEMATIC
+## TÍCH HỢP HỆ THỐNG
+## ĐẶC TẢ HÀM
+## KẾT QUẢ
