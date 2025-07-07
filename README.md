@@ -5,8 +5,7 @@ __Đề bài__: SD card
 __Sản phẩm:__
 1. Đọc ghi thẻ nhớ trên STM32 với hệ thống FAT file 
 2. Sử dụng giao thức SPI để kết nối với SD card 
-- Ảnh chụp minh họa:\
-  ![Ảnh minh họa](https://soict.hust.edu.vn/wp-content/uploads/logo-soict-hust-1-1024x416.png)
+![Image](https://github.com/user-attachments/assets/092a6ca9-eab3-4ec9-ab42-6e1d82b8e1e6)
 
 ## TÁC GIẢ
 
@@ -44,7 +43,6 @@ __Sản phẩm:__
  |STM32F429ZIT6|Bo mạch chính, xử lý logic và giao tiếp với thẻ nhớ|
  |Thẻ SD|Là thiết bị lưu trữ được giao tiếp qua SPI để đọc/ghi file|
  |Modun đọc thẻ Micro SD|Chuyển tín hiệu SPI sang chuẩn tương thích với SD, thường có chân CS, CLK, MISO, MOSI|
- |UART/Serial tới PC|Giao tiếp nối tiếp từ STM32 tới máy tính|
  |Máy tính cá nhân (PC)|Thiết bị giám sát, điều khiển, ghi log|
  
 
@@ -60,7 +58,7 @@ __Sản phẩm:__
 
 ### ĐẶC TẢ HÀM
 
-- Giải thích một số hàm quan trọng: ý nghĩa của hàm, tham số vào, ra
+[main.c](https://github.com/DucTham2004/Nhung-Vao-Tim-Em/blob/main/Core/Src/main.c)
 
   ```C
      /**
@@ -70,6 +68,8 @@ __Sản phẩm:__
      */
       void myprintf(const char *fmt, ...);
   ```
+
+[ff.c](https://github.com/DucTham2004/Nhung-Vao-Tim-Em/blob/main/Middlewares/Third_Party/FatFs/src/ff.c)
 
   ```C
     /**
@@ -141,6 +141,56 @@ __Sản phẩm:__
   FRESULT f_mount(FATFS* fs, const TCHAR* path, BYTE opt);
   ```
 
+[user_diskio.c](https://github.com/DucTham2004/Nhung-Vao-Tim-Em/blob/main/FATFS/Target/user_diskio.c)
+
+  ```C
+  /**
+   *  Khởi tạo thiết bị lưu trữ người dùng (ví dụ: thẻ SD)
+   *  @param  pdrv  Số hiệu ổ đĩa logic (thường là 0)
+   *  @retval DSTATUS  Trạng thái ổ đĩa (STA_NOINIT nếu lỗi)
+   */
+  DSTATUS USER_initialize(BYTE pdrv);
+  ```
+  ```C
+  /**
+   *  Lấy trạng thái hiện tại của thiết bị lưu trữ
+   *  @param  pdrv  Số hiệu ổ đĩa logic
+   *  @retval DSTATUS  Trạng thái ổ đĩa
+   */
+  DSTATUS USER_status(BYTE pdrv);
+  ```
+  ```C
+  /**
+   *  Đọc dữ liệu từ thiết bị lưu trữ
+   *  @param  pdrv     Số hiệu ổ đĩa logic
+   *  @param  buff     Bộ đệm lưu dữ liệu đọc được
+   *  @param  sector   Sector (block) bắt đầu đọc
+   *  @param  count    Số lượng sector cần đọc
+   *  @retval DRESULT  Kết quả đọc (RES_OK nếu thành công)
+   */
+  DRESULT USER_read(BYTE pdrv, BYTE *buff, LBA_t sector, UINT count);
+  ```
+  ```C
+  /**
+   *  Ghi dữ liệu xuống thiết bị lưu trữ
+   *  @param  pdrv     Số hiệu ổ đĩa logic
+   *  @param  buff     Dữ liệu cần ghi
+   *  @param  sector   Sector (block) bắt đầu ghi
+   *  @param  count    Số sector cần ghi
+   *  @retval DRESULT  Kết quả ghi (RES_OK nếu thành công)
+   */
+  DRESULT USER_write(BYTE pdrv, const BYTE *buff, LBA_t sector, UINT count);
+  ```
+  ```C
+  /**
+   *  Thực hiện các lệnh điều khiển đặc biệt (I/O control)
+   *  @param  pdrv   Số hiệu ổ đĩa logic
+   *  @param  cmd    Mã lệnh (ví dụ: GET_SECTOR_SIZE, CTRL_SYNC…)
+   *  @param  buff   Con trỏ dữ liệu truyền ra/vào tùy theo lệnh
+   *  @retval DRESULT  Kết quả (RES_OK nếu thành công)
+   */
+  DRESULT USER_ioctl(BYTE pdrv, BYTE cmd, void *buff);
+  ```
 ### KẾT QUẢ
 
 - Các ảnh chụp với caption giải thích.
