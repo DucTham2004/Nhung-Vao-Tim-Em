@@ -192,6 +192,4 @@ __Sản phẩm:__
   DRESULT USER_ioctl(BYTE pdrv, BYTE cmd, void *buff);
   ```
 ### KẾT QUẢ
-
-- Các ảnh chụp với caption giải thích.
-- Hoặc video sản phẩm
+- Link video demo sản phẩm: https://drive.google.com/drive/folders/1z51kYlq7QxcLHU2PZsPrKPamtFaoxgtE?usp=sharing
