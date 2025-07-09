@@ -13,7 +13,7 @@ __Sản phẩm:__
 - Thành viên trong nhóm
   |STT|Họ tên|MSSV|Công việc|
   |--:|--|--|--|
-  |1|Nguyễn Đức Thắm|20225395|Phát triển driver SPI SD Card cho FatFS|
+  |1|Nguyễn Đức Thắm|20225395|Phát triển driver SPI SD Card cho FatFS, tổng hợp, thử nghiệm|
   |2|Bùi Chí Thức|20225230|Viết báo cáo, phát triển USB Mass Storage interface|
   |3|Nguyễn Quốc Anh|20225252|Viết báo cáo,viết luồng chương trình chính và UART debug|
 
